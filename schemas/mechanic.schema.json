@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/rust-ai-builder/schemas/mechanic.schema.json",
+  "title": "BuildingMechanic",
+  "description": "A construction or defensive mechanic, documented separately from a complete base design.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "name",
+    "mechanic_type",
+    "status",
+    "purpose",
+    "source_ids",
+    "steps"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^MEC-[0-9]{6}$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "mechanic_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "INBOX",
+        "PROCESSING",
+        "PROPOSED",
+        "VERIFIED",
+        "OUTDATED",
+        "REJECTED"
+      ]
+    },
+    "purpose": {
+      "type": "string"
+    },
+    "principle_of_operation": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "requirements": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "components": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^CMP-[0-9]{6}$"
+      },
+      "uniqueItems": true
+    },
+    "steps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "order",
+          "instruction"
+        ],
+        "properties": {
+          "order": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "instruction": {
+            "type": "string"
+          },
+          "component_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^CMP-[0-9]{6}$"
+            }
+          }
+        }
+      }
+    },
+    "expected_behavior": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "known_limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "failure_conditions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "game_version": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "source_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^SRC-[0-9]{6}$"
+      },
+      "uniqueItems": true
+    },
+    "related_knowledge": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^(KNW|CMP|MEC|BLD|EXP)-[0-9]{6}$"
+      },
+      "uniqueItems": true
+    },
+    "last_verified_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    }
+  }
+}

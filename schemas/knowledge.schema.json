@@ -1,0 +1,158 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/rust-ai-builder/schemas/knowledge.schema.json",
+  "title": "KnowledgeRecord",
+  "description": "Human-reviewed knowledge record with provenance, evidence and lifecycle state.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "title",
+    "category",
+    "status",
+    "summary",
+    "claims",
+    "source_ids",
+    "evidence_type",
+    "created_at",
+    "updated_at"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^KNW-[0-9]{6}$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "category": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "status": {
+      "enum": [
+        "INBOX",
+        "PROCESSING",
+        "PROPOSED",
+        "VERIFIED",
+        "OUTDATED",
+        "REJECTED"
+      ]
+    },
+    "summary": {
+      "type": "string"
+    },
+    "claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "claim",
+          "claim_type"
+        ],
+        "properties": {
+          "claim": {
+            "type": "string",
+            "minLength": 1
+          },
+          "claim_type": {
+            "enum": [
+              "observation",
+              "interpretation",
+              "hypothesis",
+              "rule",
+              "limitation"
+            ]
+          },
+          "confidence": {
+            "enum": [
+              "low",
+              "medium",
+              "high",
+              "unknown"
+            ]
+          },
+          "source_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^SRC-[0-9]{6}$"
+            },
+            "uniqueItems": true
+          }
+        }
+      }
+    },
+    "source_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^SRC-[0-9]{6}$"
+      },
+      "uniqueItems": true
+    },
+    "evidence_type": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "OFFICIAL",
+          "COMMUNITY",
+          "EXPERIMENTAL",
+          "REPRODUCED",
+          "INFERRED"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "game_version": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "last_verified_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "validation_notes": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "related_knowledge": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^(KNW|CMP|MEC|BLD|EXP)-[0-9]{6}$"
+      },
+      "uniqueItems": true
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "rejection_reason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

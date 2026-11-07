@@ -1,0 +1,169 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/rust-ai-builder/schemas/component.schema.json",
+  "title": "BuildingComponent",
+  "description": "Computable description of a Rust building component. Unknown game-specific values must remain unknown, not guessed.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "name",
+    "component_type",
+    "status",
+    "source_ids",
+    "properties"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^CMP-[0-9]{6}$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "component_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "INBOX",
+        "PROCESSING",
+        "PROPOSED",
+        "VERIFIED",
+        "OUTDATED",
+        "REJECTED"
+      ]
+    },
+    "description": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "game_version": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "dimensions": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "unit": {
+          "enum": [
+            "meters",
+            "game_units",
+            "unknown"
+          ]
+        },
+        "width": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "exclusiveMinimum": 0
+        },
+        "length": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "exclusiveMinimum": 0
+        },
+        "height": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "exclusiveMinimum": 0
+        }
+      }
+    },
+    "properties": {
+      "type": "object",
+      "description": "Known component properties; use explicit null for unknown values and document units."
+    },
+    "connection_points": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "connection_type"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "connection_type": {
+            "type": "string"
+          },
+          "position": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "x": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "y": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "z": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              }
+            }
+          },
+          "orientation": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "Angle or normalized orientation; convention must be documented."
+          }
+        }
+      }
+    },
+    "source_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^SRC-[0-9]{6}$"
+      },
+      "uniqueItems": true
+    },
+    "related_knowledge": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^(KNW|CMP|MEC|BLD|EXP)-[0-9]{6}$"
+      },
+      "uniqueItems": true
+    },
+    "last_verified_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    }
+  }
+}

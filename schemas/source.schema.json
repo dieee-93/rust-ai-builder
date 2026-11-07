@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/rust-ai-builder/schemas/source.schema.json",
+  "title": "Source",
+  "description": "Reference to an external source. Does not imply permission to redistribute its content.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "source_type",
+    "title",
+    "locator",
+    "captured_at",
+    "access_basis"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^SRC-[0-9]{6}$"
+    },
+    "source_type": {
+      "enum": [
+        "discord_post",
+        "official_documentation",
+        "web_page",
+        "repository",
+        "video",
+        "image",
+        "experiment",
+        "other"
+      ]
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "author_or_publisher": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "community_or_channel": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "locator": {
+      "type": "string",
+      "format": "uri"
+    },
+    "message_or_resource_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "captured_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "published_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "access_basis": {
+      "enum": [
+        "user_provided_reference",
+        "publicly_accessible",
+        "user_authorized_material",
+        "official_source",
+        "other"
+      ]
+    },
+    "redistribution_permission": {
+      "enum": [
+        "not_assessed",
+        "not_permitted",
+        "permission_granted",
+        "public_license",
+        "not_applicable"
+      ]
+    },
+    "license_or_terms": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "notes": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}
