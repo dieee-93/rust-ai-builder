@@ -1,7 +1,10 @@
 ---
 id: KNW-000001
+aliases:
+  - KNW-000001
+  - "Título del conocimiento"
 title: "Título del conocimiento"
-category: "geometry"
+category: "geometry" # geometry, stability, shooting_floor, bunkers, electricity, cost
 tags: []
 status: PROPOSED
 source_ids:

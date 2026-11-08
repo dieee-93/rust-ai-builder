@@ -1,7 +1,10 @@
 ---
 id: CMP-000001
+aliases:
+  - CMP-000001
+  - "Nombre del componente"
 name: "Nombre del componente"
-component_type: "foundation" # foundation, wall, door, deployable, frame, etc.
+component_type: "foundation" # foundation, wall, door, deployable, frame, roof, floor
 status: PROPOSED
 description: "Descripción concisa del elemento en el juego."
 game_version: null

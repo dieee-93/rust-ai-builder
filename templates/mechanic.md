@@ -1,7 +1,10 @@
 ---
 id: MEC-000001
+aliases:
+  - MEC-000001
+  - "Nombre de la mecánica"
 name: "Nombre de la mecánica"
-mechanic_type: "defensive_layering"
+mechanic_type: "defensive_layering" # bunker, pixel_gap, freeplace, wallstacking, honeycomb, etc.
 status: PROPOSED
 purpose: "Propósito o ventaja táctica de la mecánica."
 principle_of_operation: "Principio físico, geométrico o de motor del juego que la sustenta."
@@ -17,7 +20,7 @@ related_knowledge:
 last_verified_at: null
 ---
 
-# # Propósito y Principio de Operación
+# Propósito y Principio de Operación
 
 ## Descripción general
 Descripción clara y técnica de la técnica o truco de construcción.

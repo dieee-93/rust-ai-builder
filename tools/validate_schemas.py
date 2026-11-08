@@ -4,23 +4,22 @@ Validación de esquemas JSON (Draft 2020-12) y registros de datos/conocimiento p
 """
 
 import sys
-import glob
 import json
 from pathlib import Path
-import yaml
 from jsonschema import Draft202012Validator
 from jsonschema.exceptions import ValidationError, SchemaError
 
 ROOT_DIR = Path(__file__).resolve().parent.parent
 SCHEMAS_DIR = ROOT_DIR / "schemas"
 DATA_DIR = ROOT_DIR / "data"
-KNOWLEDGE_DIR = ROOT_DIR / "knowledge"
 
 SCHEMA_MAP = {
     "SRC": "source.schema.json",
     "KNW": "knowledge.schema.json",
     "CMP": "component.schema.json",
     "MEC": "mechanic.schema.json",
+    "BLD": "build.schema.json",
+    "EXP": "experiment.schema.json",
 }
 
 def load_schemas():
@@ -89,7 +88,7 @@ def main():
     if not data_ok:
         sys.exit(1)
 
-    print("\n[ÉXITO] Todos los esquemas y registros son válidos.")
+    print("\n[OK] Todos los esquemas y registros JSON validados exitosamente.")
     sys.exit(0)
 
 if __name__ == "__main__":

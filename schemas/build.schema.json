@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/rust-ai-builder/schemas/build.schema.json",
+  "title": "BaseBuildDesign",
+  "description": "Base design integrating components and mechanics.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "name",
+    "design_type",
+    "status",
+    "source_ids",
+    "created_at"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^BLD-[0-9]{6}$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "design_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "INBOX",
+        "PROCESSING",
+        "PROPOSED",
+        "VERIFIED",
+        "OUTDATED",
+        "REJECTED"
+      ]
+    },
+    "description": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "footprint": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "estimated_cost": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": "number"
+      }
+    },
+    "upkeep": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": "number"
+      }
+    },
+    "mechanics_used": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^MEC-[0-9]{6}$"
+      },
+      "uniqueItems": true
+    },
+    "source_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^SRC-[0-9]{6}$"
+      },
+      "uniqueItems": true
+    },
+    "related_knowledge": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^(KNW|CMP|MEC|BLD|EXP)-[0-9]{6}$"
+      },
+      "uniqueItems": true
+    },
+    "game_version": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updated_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    }
+  }
+}

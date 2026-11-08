@@ -1,0 +1,37 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Obsidian workspace layout and caches (keep user-specific state out of git)
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/cache
+.obsidian/indexed*
+.obsidian/graph.json
+.obsidian/.trash/
+
+# Rust build artifacts
+target/
+Cargo.lock
+
+# OS metadata
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editor artifacts
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+.idea/
+*.swp
+*.swo
