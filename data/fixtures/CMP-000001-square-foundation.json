@@ -1,0 +1,35 @@
+{
+  "id": "CMP-000001",
+  "name": "Square Foundation",
+  "component_type": "foundation",
+  "status": "VERIFIED",
+  "description": "Standard square building foundation providing baseline 100% stability.",
+  "game_version": "2026.0",
+  "dimensions": {
+    "unit": "meters",
+    "width": 3.0,
+    "length": 3.0,
+    "height": 0.5
+  },
+  "properties": {
+    "base_stability": 100,
+    "decay_tier_available": ["twig", "wood", "stone", "metal", "armored"]
+  },
+  "connection_points": [
+    {
+      "name": "north_socket",
+      "connection_type": "socket_wall",
+      "position": {
+        "x": 0.0,
+        "y": 1.5,
+        "z": 0.0
+      },
+      "orientation": 0.0
+    }
+  ],
+  "source_ids": [
+    "SRC-000001"
+  ],
+  "related_knowledge": [],
+  "last_verified_at": "2026-11-08T00:00:00Z"
+}

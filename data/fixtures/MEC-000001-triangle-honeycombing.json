@@ -1,0 +1,44 @@
+{
+  "id": "MEC-000001",
+  "name": "Honeycombing triangular perimetral",
+  "mechanic_type": "defensive_layering",
+  "status": "VERIFIED",
+  "purpose": "Aumentar el coste de asalto mediante cimientos triangulares y paredes que forman celdas cerradas.",
+  "principle_of_operation": "El splash damage de explosivos no atraviesa paredes estancas adyacentes.",
+  "requirements": [
+    "Terreno despejado alrededor del núcleo",
+    "Material para mejora de grado (piedra o metal)"
+  ],
+  "components": [
+    "CMP-000001"
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "instruction": "Colocar cimientos triangulares pegados a los cimientos cuadrados del núcleo.",
+      "component_ids": [
+        "CMP-000001"
+      ]
+    },
+    {
+      "order": 2,
+      "instruction": "Levantar paredes en todos los bordes externos cerrando cada triángulo como un compartimento sellado."
+    }
+  ],
+  "expected_behavior": "Obliga a gastar explosivos adicionales por cada celda exterior sin acceder al núcleo.",
+  "known_limitations": [
+    "Aumenta el coste de upkeep del armario de herramientas (TC)."
+  ],
+  "failure_conditions": [
+    "Colocación en terreno inclinado que deje cimientos expuestos por la base."
+  ],
+  "game_version": "2026.0",
+  "source_ids": [
+    "SRC-000001"
+  ],
+  "related_knowledge": [
+    "CMP-000001",
+    "KNW-000001"
+  ],
+  "last_verified_at": "2026-11-08T00:00:00Z"
+}
